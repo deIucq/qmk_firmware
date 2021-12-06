@@ -12,7 +12,7 @@ void set_timelog(void) {
   int h = elapsed_time/1000/60/60%24;
   int m = elapsed_time/1000/60%60;
   int s = elapsed_time/1000%60;
-  snprintf(timelog_str, sizeof(timelog_str), "%ddays %02d:%02d:%02d012345",d,h,m,s);
+  snprintf(timelog_str, sizeof(timelog_str), "%ddays %02d:%02d:%02d",d,h,m,s);
 }
 
 const char *read_timelog(void) {
