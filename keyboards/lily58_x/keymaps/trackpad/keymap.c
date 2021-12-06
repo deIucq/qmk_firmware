@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
-#include "analog.h"
 #include <stdio.h>
+#include "analog.h"
 
 enum layer_number {
   _QWERTY = 0,
@@ -63,15 +63,20 @@ const char *read_keylogs(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
 
+int get_r(void);
+int get_theta(void);
+
 bool oled_task_user(void) {
   if (is_keyboard_master()) {
     // If you want to change the display of OLED, you need to change here
     oled_write_ln(read_layer_state(), false);
     //oled_write_ln(read_keylog(), false);
     oled_write_ln(read_keylogs(), false);
-    char joystickstatus[24];
-    sprintf(joystickstatus, "X:%d Y:%d", analogReadPin(F4), analogReadPin(F5));
-    oled_write_ln(joystickstatus, false);
+
+
+    char origin[24];
+    sprintf(origin, "R:%d Theta:%d", get_r(), get_theta());
+    oled_write_ln(origin, false);
     //oled_write_ln(read_mode_icon(keymap_config.swap_lalt_lgui), false);
     //oled_write_ln(read_host_led_state(), false);
     //oled_write_ln(read_timelog(), false);
@@ -81,31 +86,16 @@ bool oled_task_user(void) {
     return false;
 }
 #endif // OLED_ENABLE
+
+void set_trackpad_origin(void);
+report_mouse_t get_trackpad_report(void);
+
+void keyboard_post_init_user(void){
+  set_trackpad_origin();
+}
 void housekeeping_task_user(void){
-  //*joystick
-  const pin_t JOYSTICK_X_PIN = F4;
-  const pin_t JOYSTICK_Y_PIN = F5;
-  const bool X_INVERT = false;
-  const bool Y_INVERT = false;
-  const int DEADZONE = 40;
-  const int GAIN = 3;
-
-  int xSensVal = analogReadPin(JOYSTICK_X_PIN);
-  int ySensVal = analogReadPin(JOYSTICK_Y_PIN);
-
-  report_mouse_t mouseReport;
-  mouseReport.x = ((xSensVal - 512 > DEADZONE) | (512 - xSensVal > DEADZONE)
-                    ? (X_INVERT ? 512 - xSensVal : - 512 + xSensVal) / 4 / GAIN
-                    : 0);
-  mouseReport.y = ((ySensVal - 512 > DEADZONE) | (512 - ySensVal > DEADZONE)
-                    ? (Y_INVERT ? 512 - ySensVal : - 512 + ySensVal) / 4 / GAIN
-                    : 0);
-  mouseReport.v = 0;
-  mouseReport.h = 0;
-  mouseReport.buttons = 0;
-  pointing_device_set_report(mouseReport);
+  pointing_device_set_report(get_trackpad_report());
   pointing_device_send();
-  //*/
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
