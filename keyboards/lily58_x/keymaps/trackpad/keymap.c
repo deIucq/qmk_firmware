@@ -72,8 +72,6 @@ bool oled_task_user(void) {
     oled_write_ln(read_layer_state(), false);
     //oled_write_ln(read_keylog(), false);
     oled_write_ln(read_keylogs(), false);
-
-
     char origin[24];
     sprintf(origin, "R:%d Theta:%d", get_r(), get_theta());
     oled_write_ln(origin, false);
