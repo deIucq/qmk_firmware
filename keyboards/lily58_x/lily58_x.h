@@ -16,6 +16,7 @@
 #pragma once
 
 #include "quantum.h"
+#include "apidef.h"
 
 /* This a shortcut to help you visually see your layout.
  *
@@ -38,7 +39,7 @@
 		{ L10, L11, L12, L13, L14, L15 }, \
 		{ L20, L21, L22, L23, L24, L25 }, \
 		{ L30, L31, L32, L33, L34, L35 }, \
-		{ KC_NO, L41, L42, L43, L44, L45 }, \
+		{ KC_NO, L41, L42, L43, L44, L45}, \
 		{ R05, R04, R03, R02, R01, R00 }, \
 		{ R15, R14, R13, R12, R11, R10 }, \
 		{ R25, R24, R23, R22, R21, R20 }, \

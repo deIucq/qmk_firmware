@@ -1,5 +1,5 @@
 /*
-Copyright 2019 sekigon-gonnoc
+Copyright 2021 Ken Yoshizoe
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,7 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef __ASSEMBLER__
 #include "config_common.h"
-#include "apidef.h"
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0x0000
@@ -27,22 +26,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    duiucq
 #define PRODUCT         lily58-x
-
-// BMP
-#define BMP_BOOTPIN_AS_RESET
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
-#define LOCKING_RESYNC_ENABLE
+#define DESCRIPTION     Lily58-x
 
 // Key matrix
 #define MATRIX_ROWS_DEFAULT 10
 #define MATRIX_COLS_DEFAULT 6
 #define THIS_DEVICE_ROWS 5
 #define THIS_DEVICE_COLS 6
-#define MATRIX_ROW_PINS {  8,  9, 10, 11, 12 }
-#define MATRIX_COL_PINS { 18, 17, 16, 15, 14, 13 }
-#define MATRIX_LAYOUT {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27}
+#define DEBOUNCE 5 // Debounce reduces chatter. set 0 if debouncing is not needed
 #define DIODE_DIRECTION COL2ROW
+#define MATRIX_ROW_PINS {  8,  9, 10, 11, 12 }
+#define MATRIX_COL_PINS { 19, 17, 16, 15, 14, 13 }
+#define MATRIX_LAYOUT {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27}
 
 // RGBLED
 #define RGBLIGHT_SPLIT
@@ -75,9 +70,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_EFFECT_BREATHE_MAX    255   // 0 to 255
 #endif
 
+#define KEYMAP_PRIOR_LOCALE 0
+#define KEYMAP_ASCII 0
+
+#define CONFIG_RESERVED {0, 7, 0, 0, 0, 0, 0, 0}
+
 // MISC
-#define SOFT_SERIAL_PIN D2
-#define SERIAL_USE_MULTI_TRANSACTION
+#define OLED_DISABLE_TIMEOUT
 
 #define TAPPING_TERM_PER_KEY
 #define PERMISSIVE_HOLD
@@ -85,13 +84,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_TERM 200
 
-#define KEYMAP_PRIOR_LOCALE 0
-#define KEYMAP_ASCII 0
-
-/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 5
-
 #define DEBUG_ACTION
+
+#define BMP_BOOTPIN_AS_RESET
+
+/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
+#define LOCKING_SUPPORT_ENABLE
+#define LOCKING_RESYNC_ENABLE
 
 /*
  * Enable mass storage when the switch connected following pins is pushed on boot.
