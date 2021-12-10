@@ -16,13 +16,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #pragma once
+#include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0x04D8
-#define PRODUCT_ID      0xEB2D
-#define DEVICE_VER      0x0100
-#define MANUFACTURER    liliums
-#define PRODUCT         Lily58
+#define VENDOR_ID 0xFEED
+#define PRODUCT_ID 0x9009
+#define DEVICE_VER 0x0002
+#define MANUFACTURER deiucq
+#define PRODUCT Lily58-X
 
 /* key matrix size */
 // Rows are doubled-up
@@ -102,13 +103,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_ONESHOT
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
-
-#include "config_common.h"
-
-#ifndef SOFT_SERIAL_PIN
-#define SOFT_SERIAL_PIN D2
-#define SERIAL_USE_MULTI_TRANSACTION
-#endif
 
 #if !defined(NO_ACTION_MACRO)
     #define NO_ACTION_MACRO
