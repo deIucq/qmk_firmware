@@ -21,12 +21,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0x0000
-#define PRODUCT_ID      0x0000
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    duiucq
-#define PRODUCT         lily58-x
-#define DESCRIPTION     Lily58-x
+#define VENDOR_ID 0xFEED
+#define PRODUCT_ID 0x9009
+#define DEVICE_VER 0x0002
+#define MANUFACTURER deiucq
+#define PRODUCT Lily58-X
+#define DESCRIPTION Lily58-X is 58 key column staggered keyboard based on Lily58.
 
 // Key matrix
 #define MATRIX_ROWS_DEFAULT 10
